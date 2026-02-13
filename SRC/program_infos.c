@@ -45,5 +45,9 @@ int program_infos(){
         BLUE "-----------------------------------------------------------------------------------------------------------"RESET
     );
     printf("\n");
+    printf(STYLE_BOLD GREEN "\n================================\n" RESET);
+    printf(STYLE_BOLD CYAN "  Press any key to continue...  \n" RESET);
+    printf(STYLE_BOLD GREEN "================================\n" RESET);
+    printf("\n");
     return 0;
 }

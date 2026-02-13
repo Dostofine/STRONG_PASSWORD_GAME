@@ -5,9 +5,12 @@
 #include "play_window.h"
 #include <stdbool.h>
 #include <string.h>
-bool win=false,length_test=false, uppercase_letters_test=false, lowercase_letters_test=false, numbers_test=false, special_symbols_test=false;
-int length,points=0;
+#include <stdlib.h>
+#include "menu.h"
+#include "clear.h"
 int checker(char check_password[1024]){
+    bool win=false,length_test=false, uppercase_letters_test=false, lowercase_letters_test=false, numbers_test=false, special_symbols_test=false;
+    int length,points=0;
     length=strlen(check_password);
     if(length>=12){
         length_test=true;
@@ -26,10 +29,10 @@ int checker(char check_password[1024]){
         {
             numbers_test=true;
         }   
-        if ((*check_password>= 33 && *check_password<= 47) ||   // ! " # $ % & ' ( ) * + , - . /
-            (*check_password>= 58 && *check_password<= 64) ||   // : ; < = > ? @
-            (*check_password>= 91 && *check_password<= 96) ||   // [ \ ] ^ _ `
-            (*check_password>= 123 && *check_password<= 126))  // { | } ~
+        if ((check_password[i]>= 33 && check_password[i]<= 47) ||   // ! " # $ % & ' ( ) * + , - . /
+            (check_password[i]>= 58 && check_password[i]<= 64) ||   // : ; < = > ? @
+            (check_password[i]>= 91 && check_password[i]<= 96) ||   // [ \ ] ^ _ `
+            (check_password[i]>= 123 && check_password[i]<= 126))  // { | } ~
         { 
                 special_symbols_test=true;
         }
@@ -46,14 +49,24 @@ int checker(char check_password[1024]){
         points++;
     if(points==5)
         win=true;
-    return 0;
-}
-int checker_message(){
+
     if(win==true){
-        printf(STYLE_BOLD GREEN">congratulations , you win.<\n" RESET);
+        clear();
+        printf(STYLE_BOLD GREEN"\n╔════════════════════════════════╗\n" RESET);
+        printf(STYLE_BOLD GREEN  "║       CONGRATULATIONS!         ║\n" RESET);
+        printf(STYLE_BOLD CYAN   "║         YOU WIN!               ║\n" RESET);
+        printf(STYLE_BOLD GREEN  "║    ✓ Strong Password ✓         ║\n" RESET);
+        printf(STYLE_BOLD GREEN  "╚════════════════════════════════╝\n\n" RESET);
+        int c;
+        while((c = getchar()) != '\n' && c != EOF);
+        menu();
     }
     else{
-        printf(STYLE_BOLD RED">try again!<\n" RESET);
+        printf(STYLE_BOLD RED  "\n╔════════════════════════════════╗\n" RESET);
+        printf(STYLE_BOLD YELLOW "║        TRY AGAIN               ║\n" RESET);
+        printf(STYLE_BOLD RED    "║     ✗ Weak Password ✗          ║\n" RESET);
+        printf(STYLE_BOLD YELLOW "║   You can do better!           ║\n" RESET);
+        printf(STYLE_BOLD RED    "╚════════════════════════════════╝\n\n" RESET);
     }
     return 0;
 }
