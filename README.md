@@ -3,6 +3,7 @@
 A fun and educational command-line game that challenges you to create strong passwords using randomly provided words. Test your creativity and learn about password security best practices while playing!
 
 ![Game Screenshot](DOCS/1.png)
+![Game Screenshot](DOCS/2.png)
 
 ## 🎮 About
 
