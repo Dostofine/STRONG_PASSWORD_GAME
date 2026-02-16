@@ -1,12 +1,30 @@
 CC = gcc
-CFLAGS = -I include -Wall
-SRC = $(wildcard SRC/*.c)
-TARGET = STRONG_PASSWORD
-OUTPUT_DIR=BUILD
-all:
-	$(CC) $(CFLAGS) $(SRC) -o $(OUTPUT_DIR)/$(TARGET)
-clean:
-	rm -f $(OUTPUT_DIR)/$(TARGET)
+CFLAGS = -Wall -Wextra -Werror -Iinclude
 
-run:
-	./$(OUTPUT_DIR)/$(TARGET)
+TARGET = pastrong
+
+SRC_DIR = src
+OBJ_DIR = build
+
+SRCS = $(wildcard $(SRC_DIR)/*.c)
+OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $^ -o $@
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR) 
+
+
+run:$(TARGET)
+	./$(TARGET)
+
+clean:
+	rm -rf $(build) $(OBJ_DIR)
+
+.PHONY: clean build run all
