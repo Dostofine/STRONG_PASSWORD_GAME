@@ -52,21 +52,33 @@ int checker(char check_password[1024]){
 
     if(win==true){
         clear();
-        printf(STYLE_BOLD GREEN"\n╔════════════════════════════════╗\n" RESET);
-        printf(STYLE_BOLD GREEN  "║       CONGRATULATIONS!         ║\n" RESET);
-        printf(STYLE_BOLD CYAN   "║         YOU WIN!               ║\n" RESET);
-        printf(STYLE_BOLD GREEN  "║    ✓ Strong Password ✓         ║\n" RESET);
-        printf(STYLE_BOLD GREEN  "╚════════════════════════════════╝\n\n" RESET);
+        printf(STYLE_BOLD GREEN"\n      ╔════════════════════════════════╗\n" RESET);
+        printf(STYLE_BOLD GREEN  "      ║       CONGRATULATIONS!         ║\n" RESET);
+        printf(STYLE_BOLD CYAN   "      ║         YOU WIN!               ║\n" RESET);
+        printf(STYLE_BOLD GREEN  "      ║    ✓ Strong Password ✓         ║\n" RESET);
+        printf(STYLE_BOLD GREEN  "      ╚════════════════════════════════╝\n\n" RESET);
         int c;
         while((c = getchar()) != '\n' && c != EOF);
         menu();
     }
     else{
-        printf(STYLE_BOLD RED  "\n╔════════════════════════════════╗\n" RESET);
-        printf(STYLE_BOLD YELLOW "║        TRY AGAIN               ║\n" RESET);
-        printf(STYLE_BOLD RED    "║     ✗ Weak Password ✗          ║\n" RESET);
-        printf(STYLE_BOLD YELLOW "║   You can do better!           ║\n" RESET);
-        printf(STYLE_BOLD RED    "╚════════════════════════════════╝\n\n" RESET);
+        printf(STYLE_BOLD RED  "\n      ╔════════════════════════════════╗\n" RESET);
+        printf(STYLE_BOLD YELLOW "      ║        TRY AGAIN               ║\n" RESET);
+        printf(STYLE_BOLD RED    "      ║     ✗ Weak Password ✗          ║\n" RESET);
+        printf(STYLE_BOLD YELLOW "      ║   You can do better!           ║\n" RESET);
+        printf(STYLE_BOLD RED    "      ╚════════════════════════════════╝\n\n" RESET);
+        //print the hints
+        printf(STYLE_BOLD YELLOW "      ║                            HINTS                      ║\n" RESET);
+        if(length_test==false)
+            printf(STYLE_BOLD YELLOW "      ║   +Make it longer!                                    ║\n" RESET);
+        if(lowercase_letters_test==false)
+            printf(STYLE_BOLD YELLOW "      ║   +Try adding some small letters                      ║\n" RESET);
+        if(uppercase_letters_test==false)
+            printf(STYLE_BOLD YELLOW "      ║   +Don't forget a BIG letter!                         ║\n" RESET);
+        if(numbers_test==false)
+            printf(STYLE_BOLD YELLOW "      ║   +Add some numbers to mix it up!                     ║\n" RESET);
+        if(special_symbols_test==false)
+            printf(STYLE_BOLD YELLOW "      ║   +Spice it up with a special character like !@#      ║\n" RESET);
     }
     return 0;
 }
