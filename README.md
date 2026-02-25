@@ -120,7 +120,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - [ ] Multiple difficulty levels
 - [ ] Score system based on password complexity
-- [ ] Hint system for beginners
+- [ ✓ ] Hint system for beginners
 - [ ] Time challenge mode
 - [ ] Leaderboard functionality
 - [ ] More extensive word lists
